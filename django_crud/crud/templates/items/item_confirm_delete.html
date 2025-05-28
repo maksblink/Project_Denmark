@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Usuń przedmiot{% endblock %}
+{% block content %}
+<h2>Potwierdź usunięcie</h2>
+<p>Czy na pewno chcesz usunąć: <strong>{{ item.name }}</strong>?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">🗑 Tak, usuń</button>
+  <a href="{% url 'item_detail' item.id %}">Anuluj</a>
+</form>
+{% endblock %}

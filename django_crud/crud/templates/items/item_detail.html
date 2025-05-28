@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Szczegóły przedmiotu{% endblock %}
+{% block content %}
+<h2>{{ item.name }}</h2>
+<ul>
+    <li><strong>Numer:</strong> {{ item.number }}</li>
+    <li><strong>Styl:</strong> {{ item.style }}</li>
+    <li><strong>Materiał:</strong> {{ item.material }}</li>
+    <li><strong>Wymiary:</strong> {{ item.dimensions }}</li>
+    <li><strong>Rok powstania:</strong> {{ item.year_created }}</li>
+    <li><strong>Pochodzenie:</strong> {{ item.origin }}</li>
+    <li><strong>Stan:</strong> {{ item.condition }}</li>
+    <li><strong>Cena zakupu:</strong> {{ item.purchase_price }}</li>
+    <li><strong>Cena sprzedaży:</strong> {{ item.sale_price }}</li>
+</ul>
+{% if item.image %}
+    <img src="{{ item.image.url }}" alt="{{ item.name }}" style="max-width:300px;">
+{% endif %}
+<p>
+    <a href="{% url 'item_update' item.id %}">✏️ Edytuj</a> |
+    <a href="{% url 'item_delete' item.id %}">🗑 Usuń</a>
+</p>
+<a href="{% url 'item_list' %}">⬅ Wróć do listy</a>
+{% endblock %}
